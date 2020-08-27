@@ -6,5 +6,7 @@ Included in this repository is a Colab notebook with all relevant code, document
 Contributors:
 
 Mark Bentivegna
+
 Aman Kumar Sinha
+
 Srishti Karakoti
