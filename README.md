@@ -1,7 +1,6 @@
-# CS634-Project1
-IBM Fairness Project
+# ML Fairness Pipeline
 
-Included in this repository is a Colab notebook with all relevant code, documentation, and evnironment setup.
+Included in this repository is all relevant code. Documentation and environment setup instructions will follow.
 
 Contributors:
 
@@ -10,3 +9,5 @@ Mark Bentivegna
 Aman Kumar Sinha
 
 Srishti Karakoti
+
+Pantelis Monogioudis
