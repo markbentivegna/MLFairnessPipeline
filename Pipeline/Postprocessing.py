@@ -1,12 +1,10 @@
 from aif360.algorithms.postprocessing.reject_option_classification import RejectOptionClassification
+from Utilities.generate_binary_dataset import generate_binary_label_dataset
 
-def postprocessing(dataset_transf_train, debiased_train_pred, debiased_test_pred, unprivileged_groups, privileged_groups):
-    ROC = RejectOptionClassification(unprivileged_groups=unprivileged_groups, privileged_groups=privileged_groups)
-    ROC = ROC.fit(dataset_transf_train, debiased_train_pred)
+def Postprocessing(reweighted_data, pred, label, unprivileged_groups, privileged_groups, protected_attribute, favorable_label, unfavorable_label, threshold=0.01):
+    reweighted_binary_dataset = generate_binary_label_dataset(reweighted_data, label, protected_attribute, favorable_label, unfavorable_label)
+    prediction_binary_dataset = generate_binary_label_dataset(pred, label, protected_attribute, favorable_label, unfavorable_label)
+    ROC = RejectOptionClassification(unprivileged_groups=unprivileged_groups, privileged_groups=privileged_groups, low_class_thresh=threshold)
+    ROC.fit(reweighted_binary_dataset, prediction_binary_dataset)
 
-    print("Dataset Train: Optimal classification threshold = %.4f" % ROC.classification_threshold)
-
-    roc_train_pred = ROC.predict(debiased_train_pred)
-    roc_test_pred = ROC.predict(debiased_test_pred)
-
-    return roc_train_pred, roc_test_pred
+    return ROC.predict(prediction_binary_dataset).convert_to_dataframe()[0]
