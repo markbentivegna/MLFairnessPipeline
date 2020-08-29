@@ -2,9 +2,33 @@
 
 To combat the implicit bias in Machine Learning, MLFairnessPipeline allows data scientists to gain insight into how their models perform from an equality perspective. It provides fairness metrics and provides added context against control groups without any fairness smoothing.
 
+ MLFairnessPipeline is an end-to-end machine learning pipeline with the three following stages:
+	
+1.	Pre-processing – Factor re-weighting
+2.	In-processing – Adversarial debiasing neural network
+3.	Post-processing – Reject Option Based Classification
+
+
+### Pre-processing
+•	Weights examples differently to provide a boost before classification (ensures mean of favorable outcomes between privileged and unprivileged groups are similar)
+•	Happens before classification, levels the playing field before predictions
+
+### In-processing
+•	Adversarial debiasing maximizes accuracy while simultaneously reducing ability to predict protected attribute based on prediction
+•	Breaks link between protected attribute and outcome, ensures the relationship is a one way street
+
+### Post-processing
+•	Reject Option Based Classification (ROC) has threshold within decision boundary and swaps predictions after classification
+•	Provides favorable outcomes to unprivileged groups and unfavorable outcomes to privileged groups
+•	A slight boost for unprivileged group to ensure equality
+
+
+
 ### To install using Pip:
 
+```
 pip install MLFairnessPipeline
+```
 
 ### Example code snippet:
 ```
