@@ -1,5 +1,6 @@
 from aif360.algorithms.inprocessing.adversarial_debiasing import AdversarialDebiasing
-from Utilities.generate_binary_dataset import generate_binary_label_dataset
+from aif360.datasets.binary_label_dataset import BinaryLabelDataset
+from MLFairnessPipeline.Utilities import generate_binary_label_dataset
 import tensorflow as tf
 
 class Fair_Model():

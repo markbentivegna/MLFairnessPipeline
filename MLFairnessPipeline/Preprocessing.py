@@ -1,5 +1,6 @@
 from aif360.algorithms.preprocessing import Reweighing
-from Utilities.generate_binary_dataset import generate_binary_label_dataset
+from aif360.datasets.binary_label_dataset import BinaryLabelDataset
+from MLFairnessPipeline.Utilities import generate_binary_label_dataset
 
 def Preprocessing(dataset, label, unprivileged_groups, privileged_groups, protected_attribute, favorable_label, unfavorable_label):
     binary_dataset = generate_binary_label_dataset(dataset, label, protected_attribute, favorable_label, unfavorable_label)
